@@ -6,6 +6,9 @@
 package Principal;
 
 import estructuraDatos.Cliente;
+import estructuraDatos.Enumerados;
+import estructuraDatos.Medicamento;
+import estructuraDatos.ParaFarmacia;
 import estructuraDatos.Producto;
 import utilidades.IO_ES;
 import utilidades.ValidarDatos;
@@ -89,7 +92,7 @@ public class Principal {
 
                 case 5:
 
-                    aniadirProducto();
+                    menuAniadirProducto();
 
                     break;
 
@@ -366,15 +369,297 @@ public class Principal {
         }
     }
 
-//****************** opción 5. Método aniadirProducto **************
+    //***********************************************************************
+    //BLOQUE AÑADIR MEDICAMENTOS Y PARAFARMACIA
+    //*********************************************************************
+    //*********** menuAniadirProductos ***************
     /**
-     * Método para añadir clientes al arrayProducto. Si encuentra uns posición
-     * vacía en el arrayProductos colocará ahí al nuevo objeto cliente y saldrá
-     * del bucle. Preguntará cada parámetro del contructror Producto
+     * Menú a mostrar cuando queramos añadir un producto, y nos permitirá
+     * escoger entre medicacmento o parafamacia
+     *
+     */
+    public static void menuAniadirProducto() {
+
+        int opcion;
+        boolean bandera = false;
+
+        do {
+            System.out.println(" ");
+            System.out.println("< --- *** Menú añadir un producto: *** --->");
+            System.out.println(" ");
+            System.out.println("1. Añadir un medicamento.");
+            System.out.println("2. Añadir un producto de Parafarmacia.");
+            System.out.println("0. Volver al menú principal");
+            System.out.println(" ");
+            opcion = IO_ES.leerInteger("Escoge una opción entre 0 y 2: ", 0, 2);
+
+            switch (opcion) {
+
+                case 1: {
+                    aniadirMedicamento();
+                    break;
+                }
+                case 2: {
+                    aniadirParaFarmacia();
+                    break;
+                }
+
+                case 0: {
+                    bandera = true;
+                    break;
+                }
+                default: {
+                    System.out.println("No es una opción válida");
+                    break;
+                }
+            }
+        } while (!bandera);
+
+    }
+
+    //************* método menuEnumTipoMedicamento *******
+    //Para dar la opción al usuario de escoger el tipo de medicamento
+    public static Enumerados.TipoMedicamento menuEnumTipoMedicamento() {
+
+        /**
+         * Método para mostrar el menú con las opciones del enum
+         * TipoMedicamentos
+         */
+        int opcion;
+        Enumerados.TipoMedicamento medicamento = null;
+        System.out.println(" ");
+        System.out.println("<--- ** Opciones de tipo de medicamento disponibles ** ---->");
+        System.out.println(" ");
+        System.out.println("1. Analgésicos");
+        System.out.println("2. Laxantes.");
+        System.out.println("3. Antiinfecciosos.");
+        System.out.println("4. Antidepresivos.");
+        System.out.println("5. Antitusivos.");
+        System.out.println("6. Mucolíticos.");
+        System.out.println("7. Antiácidos");
+        System.out.println("8. Antiulcerosos");
+        System.out.println("9. Antialérgicos.");
+        System.out.println("10. Antidiárreicos");
+        System.out.println("0. Volver al menú Añadir Productos.");
+        System.out.println(" ");
+        opcion = IO_ES.leerInteger("Escoge una opción", 0, 10);
+
+        switch (opcion) {
+
+            case 1:
+
+                medicamento = Enumerados.TipoMedicamento.ANALGESICOS;
+
+                break;
+
+            case 2:
+
+                medicamento = Enumerados.TipoMedicamento.LAXANTES;
+                break;
+
+            case 3:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIINFECCIOSOS;
+
+                break;
+
+            case 4:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIDEPRESIVOS;
+
+                break;
+
+            case 5:
+
+                medicamento = Enumerados.TipoMedicamento.ANTITUSIVOS;
+
+                break;
+
+            case 6:
+
+                medicamento = Enumerados.TipoMedicamento.MUCOLITICOS;
+
+                break;
+
+            case 7:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIACIDOS;
+
+                break;
+
+            case 8:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIULCEROSOS;
+
+                break;
+
+            case 9:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIALERGICOS;
+
+                break;
+
+            case 10:
+
+                medicamento = Enumerados.TipoMedicamento.ANTIDIARREICOS;
+
+                break;
+
+            case 0:
+
+                break;
+
+        }
+
+        return medicamento;
+
+    }
+
+    //************* método menuEnumCategoriaParafarmacia *******
+    //Para dar la opción al usuario de escoger el tipo de categoria de parafarmacia
+    public static Enumerados.Categoria menuEnumCategoriaParafarmacia() {
+
+        /**
+         * Método para mostrar el menú con las opciones del enum Categoria, que
+         * da la categoría del producto de parafarmacia
+         */
+        int opcion;
+        Enumerados.Categoria categoria = null;
+
+        System.out.println(" ");
+        System.out.println("<--- ** Opciones de categorias de parafarmacia disponibles ** ---->");
+        System.out.println(" ");
+        System.out.println("1. Dental");
+        System.out.println("2. Facial.");
+        System.out.println("3. Geles.");
+        System.out.println("4. Corporal.");
+        System.out.println("5. Cabello.");
+        System.out.println("6. Antimosquitos.");
+        System.out.println("7. Íntima");
+        System.out.println("8. Nasal");
+        System.out.println("9. Ocular.");
+        System.out.println("10. Botiquín");
+        System.out.println("11. Oidos.");
+        System.out.println("12. Toallitas");
+        System.out.println("13. Limpieza");
+        System.out.println("14. Hogar");
+        System.out.println("15. Macarillas.");
+        System.out.println("0. Volver al menú Añadir Productos.");
+        System.out.println(" ");
+        opcion = IO_ES.leerInteger("Escoge una opción", 0, 15);
+
+        switch (opcion) {
+
+            case 1:
+
+                categoria = Enumerados.Categoria.DENTAL;
+
+                break;
+
+            case 2:
+
+                categoria = Enumerados.Categoria.FACIAL;
+
+                break;
+
+            case 3:
+
+                categoria = Enumerados.Categoria.GELES;
+
+                break;
+
+            case 4:
+
+                categoria = Enumerados.Categoria.CORPORAL;
+
+                break;
+
+            case 5:
+
+                categoria = Enumerados.Categoria.CABELLO;
+
+                break;
+
+            case 6:
+
+                categoria = Enumerados.Categoria.ANTIMOSQUITOS;
+
+                break;
+
+            case 7:
+
+                categoria = Enumerados.Categoria.INTIMA;
+
+                break;
+
+            case 8:
+
+                categoria = Enumerados.Categoria.NASAL;
+
+                break;
+
+            case 9:
+
+                categoria = Enumerados.Categoria.OCULAR;
+
+                break;
+
+            case 10:
+
+                categoria = Enumerados.Categoria.BOTIQUIN;
+
+                break;
+
+            case 11:
+
+                categoria = Enumerados.Categoria.OIDOS;
+
+                break;
+
+            case 12:
+
+                categoria = Enumerados.Categoria.TOALLITAS;
+
+                break;
+
+            case 13:
+
+                categoria = Enumerados.Categoria.LIMPIEZA;
+
+                break;
+
+            case 14:
+
+                categoria = Enumerados.Categoria.HOGAR;
+
+                break;
+
+            case 15:
+
+                categoria = Enumerados.Categoria.MASCARILLAS;
+
+                break;
+
+            case 0:
+
+                break;
+
+        }
+
+        return categoria;
+
+    }
+
+//****************** opción 1 de menuAñadirProducto: Método aniadirMedicamento **************
+    /**
+     * Método para añadir medicamentos al arrayProducto. Si encuentra uns
+     * posición vacía en el arrayProductos colocará ahí al nuevo objeto
+     * Medicamento y saldrá del bucle. Preguntará cada parámetro del contructror
+     * Medicamento
      *
      *
      */
-    public static void aniadirProducto() {
+    public static void aniadirMedicamento() {
 
         boolean huecoLleno = false;
         boolean bandera = false;
@@ -383,6 +668,9 @@ public class Principal {
         String descripcion = " ";
         Double precio = 0.0;
         int unidades = 0;
+        Enumerados.TipoMedicamento medicamento;
+        String comoTomar;
+        String efectosAdversos;
 
         codigo = rellenarCodigo();
 
@@ -402,8 +690,77 @@ public class Principal {
                     descripcion = (IO_ES.leerCadena("Introduzca la descripción: "));
                     precio = (IO_ES.leerRealLargo("Introduzca el precio: "));
                     unidades = (IO_ES.leerInteger("Introduzca las unidades del producto: "));
+                    medicamento = menuEnumTipoMedicamento();
+                    comoTomar = (IO_ES.leerCadena("Indique cómo tomar el medicamento: "));
+                    efectosAdversos = (IO_ES.leerCadena("Introdusca posibles efectos adversos del medicamento: "));
 
-                    arrayProductos[contadorProductos] = new Producto(codigo, nombre, descripcion, precio, unidades);
+                    arrayProductos[contadorProductos] = new Medicamento(codigo, nombre, descripcion, precio, unidades, medicamento, comoTomar, efectosAdversos);
+
+                    contadorProductos++; //Cada vez que creemos un producto aumentamos el contador
+
+                    huecoLleno = true; //con esto evitamos seguir el bucle que busca el hueco
+
+                } else {
+
+                    huecoLleno = false;
+                    contador++;
+                }
+
+            }
+            if (contador == MAXIMOPRODUCTOS) {
+
+                IO_ES.escribirLN("Base de datos llena, ya no caben más productos");
+            }
+
+        }
+
+    }
+
+    /**
+     * **************** opción de menuAñadirProducto: Método
+     * aniadirParaFarmacia ************** /** Método para añadir nuevo producto
+     * de parafarmacia al arrayProducto. Si encuentra uns posición vacía en el
+     * arrayProductos colocará ahí al nuevo objeto ParaFarmacia y saldrá del
+     * bucle. Preguntará cada parámetro del contructror ParaFarmacia.
+     *
+     *
+     */
+    public static void aniadirParaFarmacia() {
+
+        boolean huecoLleno = false;
+        boolean bandera = false;
+        String codigo;
+        String nombre;
+        String descripcion = " ";
+        Double precio = 0.0;
+        int unidades = 0;
+        Enumerados.Categoria categoria;
+        int dosisUnidades = 0;
+        float descuento = 0;
+
+        codigo = rellenarCodigo();
+
+        if (comprobarProductoExiste(codigo) == true) {  //Comprobamos si el producto ya existe
+
+            IO_ES.escribirLN("Producto ya existente");
+
+        } else {
+
+            int contador = 0;
+
+            for (int i = 0; i < MAXIMOPRODUCTOS && !huecoLleno; i++) {
+
+                if (arrayProductos[i] == null) { //Si comprobamos todo lo anterior, ahora buscamos el primer hueco en el array y ahí metemos al producto
+
+                    nombre = (IO_ES.leerCadena("Introduzca el nombre: "));
+                    descripcion = (IO_ES.leerCadena("Introduzca la descripción: "));
+                    precio = (IO_ES.leerRealLargo("Introduzca el precio: "));
+                    unidades = (IO_ES.leerInteger("Introduzca las unidades del producto: "));
+                    categoria = menuEnumCategoriaParafarmacia();
+                    dosisUnidades = IO_ES.leerInteger("Introduzca el número de dosis que hay en cada envase: ");
+                    descuento = IO_ES.leerReal("Indica que descuento tiene el producto: ");
+
+                    arrayProductos[contadorProductos] = new ParaFarmacia(codigo, nombre, descripcion, precio, unidades, categoria, dosisUnidades, descuento);
 
                     contadorProductos++; //Cada vez que creemos un producto aumentamos el contador
 
@@ -589,7 +946,7 @@ public class Principal {
 
         String codigo;
 
-        codigo = IO_ES.leerCadena("Introduzca el código del producto al que quiere añadir unidades: ", 13);
+        codigo = IO_ES.leerCadena("Introduzca el código del producto al que quiere añadir unidades: ");
 
         if (buscarProductos(codigo) != null) {
 
@@ -610,7 +967,7 @@ public class Principal {
 
         String codigo;
 
-        codigo = IO_ES.leerCadena("Introduzca el código del producto al que quiere restar unidades: ", 13);
+        codigo = IO_ES.leerCadena("Introduzca el código del producto al que quiere restar unidades: ");
 
         if (buscarProductos(codigo) != null) {
 
@@ -786,7 +1143,7 @@ public class Principal {
 
         if (ValidarDatos.verificarNIF(nifNie)) {
 
-            id = nifNie;
+            id = nifNie.toUpperCase();
         } else {
 
             id = "Documento no válido";
