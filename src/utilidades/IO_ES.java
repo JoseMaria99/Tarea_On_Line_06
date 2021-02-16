@@ -18,6 +18,8 @@ import java.util.Scanner;
  */
 public class IO_ES {
 
+    static String reset = "\u001B[0m";
+
     //**************** leerInteger sin mensaje**********
     /**
      * Método que pide al usuario que introduzca un número. El número esperado
@@ -150,7 +152,7 @@ public class IO_ES {
 
             Scanner sc = new Scanner(System.in);
 
-            System.out.println(mensaje);
+            System.out.print(mensaje);
             String s = sc.nextLine();
 
             if (s != null) {
@@ -544,6 +546,122 @@ public class IO_ES {
     public static void escribirLN(String mensaje) {
 
         System.out.println(mensaje);
+
+    }
+
+    //*************Método para que el texto de salida sea rojo *****************
+    /**
+     * Método para que el texto que se escriba salga en rojo, con salto de línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnRojo(String mensage) {
+
+        String red = "\033[31m";
+
+        System.out.println(red + mensage + reset);
+    }
+
+    //*************Método para que el texto de salida sea verde *****************
+    /**
+     * Método para que el texto que se escriba salga en verde, con salto de
+     * línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnVerde(String mensaje) {
+
+        String green = "\033[32m";
+
+        System.out.println(green + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea azul *****************
+    /**
+     * Método para que el texto que se escriba salga en azul, con salto de línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnAzul(String mensaje) {
+
+        String blue = "\033[34m";
+
+        System.out.println(blue + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea morado *****************
+    /**
+     * Método para que el texto que se escriba salga en morado, con salto de
+     * línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnPurple(String mensaje) {
+
+        String purple = "\033[35m";
+
+        System.out.println(purple + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea morado *****************
+    /**
+     * Método para que el texto que se escriba salga en cyan, con salto de línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnCyan(String mensaje) {
+
+        String cyan = "\033[36m";
+
+        System.out.println(cyan + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea amarillo *****************
+    /**
+     * Método para que el texto que se escriba salga en amarillo, con salto de
+     * línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnAmarillo(String mensaje) {
+
+        String yellow = "\033[33m";
+
+        System.out.println(yellow + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea blanco *****************
+    /**
+     * Método para que el texto que se escriba salga en blanco, con salto de
+     * línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnBlanco(String mensaje) {
+
+        String white = "\033[37m";;
+
+        System.out.println(white + mensaje + reset);
+
+    }
+
+    //*************Método para que el texto de salida sea negro *****************
+    /**
+     * Método para que el texto que se escriba salga en negro, con salto de
+     * línea
+     *
+     * @param mensaje
+     */
+    public static void escribirLnNegro(String mensaje) {
+
+        String black = "\033[30m";
+
+        System.out.println(black + mensaje + reset);
 
     }
 

@@ -17,13 +17,27 @@ public class ParaFarmacia extends Producto {
     private int dosisUnidades;
     private float descuento;
 
-    public ParaFarmacia(String codigo, String nombre, String descripcion, double precio, int unidades, Categoria categoria, int dosisUnidades, float descuento) {
+    public ParaFarmacia(String codigo, String nombre, String descripcion, double precio, int unidades, Categoria categoria,
+            int dosisUnidades, float descuento) {
 
         super(codigo, nombre, descripcion, precio, unidades);
         this.categoria = categoria;
         this.dosisUnidades = dosisUnidades;
         this.descuento = descuento;
 
+    }
+
+    public ParaFarmacia(ParaFarmacia paraFarmacia) {
+
+        super(paraFarmacia.getCodigo(),
+                paraFarmacia.getNombre(),
+                paraFarmacia.getDescripcion(),
+                paraFarmacia.getPrecio(),
+                paraFarmacia.getUnidades());
+
+        this.categoria = paraFarmacia.categoria;
+        this.dosisUnidades = paraFarmacia.dosisUnidades;
+        this.descuento = paraFarmacia.descuento;
     }
 
     public Categoria getCategoria() {
@@ -52,7 +66,7 @@ public class ParaFarmacia extends Producto {
 
     @Override
     public String toString() {
-        return (super.toString() + "\n   Categoría de Parafarmacia: " + categoria + "\n   Número de dosis por envase: " + dosisUnidades + "\n  El descuento que tiene es de un: " + descuento);
+        return (super.toString() + "\n   Categoría de Parafarmacia: " + categoria + "\n   Número de dosis por envase: " + dosisUnidades + "\n  El descuento que tiene es de un: " + descuento + "%");
     }
 
 }

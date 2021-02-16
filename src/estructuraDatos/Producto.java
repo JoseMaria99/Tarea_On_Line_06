@@ -55,9 +55,11 @@ public abstract class Producto {
 
     public Producto(Producto producto) {
 
-    }
-
-    public Producto() {
+        producto.getCodigo();
+        producto.getNombre();
+        producto.getDescripcion();
+        producto.getPrecio();
+        producto.getUnidades();
 
     }
 
@@ -142,7 +144,7 @@ public abstract class Producto {
 
         boolean aniadeUnidades = false;
 
-        if (nuevasUnidades >= 0) {
+        if (nuevasUnidades > 0) {
 
             unidades = unidades + nuevasUnidades;
             aniadeUnidades = true;
@@ -163,7 +165,7 @@ public abstract class Producto {
 
         boolean quitarUnidades = false;
 
-        if (menosUnidades >= 0) {
+        if (menosUnidades > 0) {
 
             if (unidades < menosUnidades) {
 

@@ -13,30 +13,37 @@ import estructuraDatos.Enumerados.TipoMedicamento;
  */
 final public class Medicamento extends Producto {
 
-    private TipoMedicamento medicamento;
+    private TipoMedicamento tipoMedicamento;
     private String comoTomar;
     private String efectosAdversos;
 
-    public Medicamento(String codigo, String nombre, String descripcion, double precio, int unidades, TipoMedicamento medicamento, String comoTomar, String efectosAdversos) {
+    public Medicamento(String codigo, String nombre, String descripcion, double precio,
+            int unidades, TipoMedicamento tipoMedicamento, String comoTomar,
+            String efectosAdversos) {
 
         super(codigo, nombre, descripcion, precio, unidades);
-        this.medicamento = medicamento;
+        this.tipoMedicamento = tipoMedicamento;
         this.comoTomar = comoTomar;
         this.efectosAdversos = efectosAdversos;
 
     }
 
-    public Medicamento(TipoMedicamento medicamento) {
+    public Medicamento(Medicamento medicamento) {
 
-        this.medicamento = medicamento;
+        super(medicamento.getCodigo(), medicamento.getNombre(),
+                medicamento.getDescripcion(), medicamento.getPrecio(),
+                medicamento.getUnidades());
+        this.tipoMedicamento = medicamento.tipoMedicamento;
+        this.comoTomar = medicamento.comoTomar;
+        this.efectosAdversos = medicamento.efectosAdversos;
     }
 
-    public TipoMedicamento getMedicamento() {
-        return medicamento;
+    public TipoMedicamento getTipoMedicamento() {
+        return tipoMedicamento;
     }
 
-    public void setMedicamento(TipoMedicamento medicamento) {
-        this.medicamento = medicamento;
+    public void setTipoMedicamento(TipoMedicamento tipoMedicamento) {
+        this.tipoMedicamento = tipoMedicamento;
     }
 
     public String getComoTomar() {
@@ -57,7 +64,7 @@ final public class Medicamento extends Producto {
 
     @Override
     public String toString() {
-        return (super.toString() + "\n   Tipo de Medicamento: " + medicamento + "\n   Cómo tomar el medicamento: " + comoTomar + "\n   Los posibles efectos adversos son: : " + efectosAdversos);
+        return (super.toString() + "\n   Tipo de Medicamento: " + tipoMedicamento + "\n   Cómo tomar el medicamento: " + comoTomar + "\n   Los posibles efectos adversos son: : " + efectosAdversos);
     }
 
 }

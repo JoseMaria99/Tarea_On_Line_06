@@ -6,17 +6,21 @@
 package estructuraDatos;
 
 /**
+ * Clase para crear dos enumerados, Categoría y TipoMedicamento. ambos serán
+ * variables de ParaFarmacia y Medicamentos respectivamente. Y se pedirán en los
+ * constructores respectivos
  *
  * @author José María Pérez
+ * @version 1.0
  */
 public class Enumerados {
 
-    enum Categoria {
+    public enum Categoria {
 
         DENTAL, FACIAL, GELES, CORPORAL, CABELLO, ANTIMOSQUITOS, INTIMA, NASAL, OCULAR, BOTIQUIN, OIDOS, TOALLITAS, LIMPIEZA, HOGAR, MASCARILLAS
     }
 
-    enum TipoMedicamento {
+    public enum TipoMedicamento {
 
         ANALGESICOS, LAXANTES, ANTIINFECCIOSOS, ANTIDEPRESIVOS, ANTITUSIVOS, MUCOLITICOS, ANTIACIDOS, ANTIULCEROSOS, ANTIALERGICOS, ANTIDIARREICOS
     }
