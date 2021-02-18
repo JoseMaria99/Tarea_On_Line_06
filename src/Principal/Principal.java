@@ -38,13 +38,6 @@ public class Principal {
      */
     public static void main(String[] args) {
 
-        /* esto es para mis pruebas
-        arrayClientes[0] = new Cliente("28923637X", "Pepe", "Calle alameda", "676079584", false);
-        System.out.println(arrayClientes[0].toString());
-
-        arrayProductos[0] = new Producto("1234567890123", "crema", "para los pies", 4.65, 5);
-        System.out.println(arrayProductos[0]);
-         */
         boolean bandera = false;
         int opcion;
 
@@ -57,15 +50,14 @@ public class Principal {
             IO_ES.escribirLN(" ");
 
             IO_ES.escribirLN("1. Menú clientes.");
-            IO_ES.escribirLN("2. Menú medicamentos.");
-            IO_ES.escribirLN("3. Menú parafarmacia.");
-            IO_ES.escribirLN("4. Ver un solo cliente.");
-            IO_ES.escribirLN("5. Ver un solo producto.");
-            IO_ES.escribirLN("6. Listar todos los clientes.");
-            IO_ES.escribirLN("7. Listar todos los productos.");
+            IO_ES.escribirLN("2. Menú productos.");
+            IO_ES.escribirLN("3. Ver un solo cliente.");
+            IO_ES.escribirLN("4. Ver un solo producto.");
+            IO_ES.escribirLN("5. Listar todos los clientes.");
+            IO_ES.escribirLN("6. Listar todos los productos.");
             IO_ES.escribirLN("0. Salir del programa.");
             IO_ES.escribirLN(" ");
-            opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 7);
+            opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 6);
 
             switch (opcion) {
 
@@ -77,35 +69,29 @@ public class Principal {
 
                 case 2:
 
-                    menuMedicamento();
+                    menuProductos();
 
                     break;
 
                 case 3:
 
-                    menuParafarmacia();
+                    visualizarUnCliente();
 
                     break;
 
                 case 4:
 
-                    visualizarUnCliente();
+                    visualizarUnProducto();
 
                     break;
 
                 case 5:
 
-                    visualizarUnProducto();
-
-                    break;
-
-                case 6:
-
                     visualizarClientes();
 
                     break;
 
-                case 7:
+                case 6:
 
                     visualizarProductos();
 
@@ -306,7 +292,7 @@ public class Principal {
 
         } else {
 
-            IO_ES.escribirLnRojo("No hay clientes creados.");
+            IO_ES.escribirLnRojo("No hay clientes con ese identificador.");
         }
 
     }
@@ -426,7 +412,7 @@ public class Principal {
         System.out.println("10. Antidiárreicos");
         System.out.println("0. Volver al menú Añadir Productos.");
         System.out.println(" ");
-        opcion = IO_ES.leerInteger("Escoge una opción", 0, 10);
+        opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 10);
 
         switch (opcion) {
 
@@ -530,7 +516,7 @@ public class Principal {
         System.out.println("15. Macarillas.");
         System.out.println("0. Volver al menú Añadir Productos.");
         System.out.println(" ");
-        opcion = IO_ES.leerInteger("Escoge una opción", 0, 15);
+        opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 15);
 
         switch (opcion) {
 
@@ -637,40 +623,38 @@ public class Principal {
     //*********************************************************************************************
     //           Bloque Menú Medicamentos
     //***************************************************************************************************
+    //* ************* Opción 2. Método menuProductos
+    //* *********************************************
     /**
-     * ************* Opción 2. Método menuMedicamento
-     * ********************************************* /** Menú a mostrar cuando
-     * queramos trabajar con un medicamento
+     * Menú a mostrar cuando queramos trabajar con un producto
      *
      */
-    public static void menuMedicamento() {
+    public static void menuProductos() {
 
         int opcion;
         boolean bandera = false;
 
         do {
             IO_ES.escribirLnCyan(" ");
-            IO_ES.escribirLnCyan("< --- *** Menú Medicamento: *** --- >");
+            IO_ES.escribirLnCyan("< --- *** Menú Productos *** --- >");
             IO_ES.escribirLnCyan(" ");
-            IO_ES.escribirLnCyan("1. Añadir Medicamento.");
-            IO_ES.escribirLnCyan("2. Modificar código del medicamento");
-            IO_ES.escribirLnCyan("3. Modificar nombre del medicamento.");
-            IO_ES.escribirLnCyan("4. Modificar la descripción del medicamento.");
-            IO_ES.escribirLnCyan("5. Modificar el precio del medicamento.");
-            IO_ES.escribirLnCyan("6. Añadir unidades del medicamento.");
-            IO_ES.escribirLnCyan("7. Restar unidades del medicamento.");
-            IO_ES.escribirLnCyan("8. Modificar el tipo de medicamento.");
-            IO_ES.escribirLnCyan("9. Modificar cómo tomar el medicamento.");
-            IO_ES.escribirLnCyan("10. Modificar los efectos adeversos del medicamento.");
-            IO_ES.escribirLnCyan("11. Eliminar un producto.");
+            IO_ES.escribirLnCyan("1. Crear Producto.");
+            IO_ES.escribirLnCyan("2. Modificar código del producto");
+            IO_ES.escribirLnCyan("3. Modificar nombre del producto.");
+            IO_ES.escribirLnCyan("4. Modificar la descripción del producto.");
+            IO_ES.escribirLnCyan("5. Modificar el precio del producto.");
+            IO_ES.escribirLnCyan("6. Añadir unidades del producto.");
+            IO_ES.escribirLnCyan("7. Restar unidades del producto.");
+            IO_ES.escribirLnCyan("8. Modificar otros parámetros de los productos.");
+            IO_ES.escribirLnCyan("9. Eliminar un producto.");
             IO_ES.escribirLnCyan("0. Volver al menú principal");
             IO_ES.escribirLnCyan(" ");
-            opcion = IO_ES.leerInteger("Escoge una opción entre 0 y 11: ", 0, 11);
+            opcion = IO_ES.leerInteger("Escoge una opción entre 0 y 9: ", 0, 9);
 
             switch (opcion) {
 
                 case 1: {
-                    aniadirMedicamento();
+                    crearProducto();
                     break;
                 }
 
@@ -703,26 +687,12 @@ public class Principal {
 
                 case 8: {
 
-                    modificarTipoMedicamento();
+                    menuModificarOtrosParametros();
 
                     break;
                 }
 
                 case 9: {
-
-                    modificarComoTomarMediacamento();
-
-                    break;
-                }
-
-                case 10: {
-
-                    modificarEfectosAdversos();
-
-                    break;
-                }
-
-                case 11: {
 
                     eliminarProducto();
 
@@ -742,39 +712,39 @@ public class Principal {
 
     }
 
-    //****************** opción 2.1. de menuAñadirProducto: Método aniadirMedicamento **************
+    //****************** opción 2.1.: Método crearProducto **************
     /**
-     * Método para añadir medicamentos al arrayProducto. Si encuentra uns
-     * posición vacía en el arrayProductos colocará ahí al nuevo objeto
-     * Medicamento y saldrá del bucle. Preguntará cada parámetro del contructror
-     * Medicamento
+     * Método para crear productos al arrayProducto. Si encuentra una posición
+     * vacía en el arrayProductos colocará ahí al nuevo producto y saldrá del
+     * bucle. Preguntará cada parámetro del contructror producto, y tras las
+     * unidades, se creará un menú para decidir si es un medicamento o es
+     * parafarmacia, y según sea, se aplcarán los métodos correspondientes para
+     * crear cada tipo de producto.
      *
      *
      */
-    public static void aniadirMedicamento() {
+    public static void crearProducto() {
 
-        boolean huecoLleno = false;
+        boolean huecoLleno = false; //booleano para comprobar si hay un hueco vacío en el array y lo complete
         boolean bandera = false;
         String codigo;
         String nombre;
         String descripcion = " ";
         Double precio = 0.0;
         int unidades = 0;
-        Enumerados.TipoMedicamento medicamento;
-        String comoTomar;
-        String efectosAdversos;
+        int opcion;
 
         codigo = rellenarCodigo();
 
-        if (Producto.comprobarCodigo(codigo) == true) {
+        if (Producto.comprobarCodigo(codigo) == true) { //Compruebo primero que el código es válido
 
             if (comprobarProductoExiste(codigo) == true) {  //Comprobamos si el producto ya existe
 
                 IO_ES.escribirLN("Producto ya existente");
 
-            } else {
+            } else { // si el código es válido y el producto no existe empezamos a crear el nuevo producto
 
-                int contador = 0;
+                int contador = 0; //Contador para que contabilice si el array está lleno
 
                 for (int i = 0; i < MAXIMOPRODUCTOS && !huecoLleno; i++) {
 
@@ -784,11 +754,28 @@ public class Principal {
                         descripcion = (IO_ES.leerCadena("Introduzca la descripción: "));
                         precio = (IO_ES.leerRealLargo("Introduzca el precio: "));
                         unidades = (IO_ES.leerInteger("Introduzca las unidades del producto: "));
-                        medicamento = menuEnumTipoMedicamento();
-                        comoTomar = (IO_ES.leerCadena("Indique cómo tomar el medicamento: "));
-                        efectosAdversos = (IO_ES.leerCadena("Introduzca posibles efectos adversos del medicamento: "));
 
-                        arrayProductos[contadorProductos] = new Medicamento(codigo, nombre, descripcion, precio, unidades, medicamento, comoTomar, efectosAdversos);
+                        IO_ES.escribirLnCyan(" ");
+                        IO_ES.escribirLnCyan("< --- ¿Qué quiere crear? --- >");
+                        IO_ES.escribirLnCyan(" ");
+                        IO_ES.escribirLnCyan("1. ¿Un Medicamento?.");
+                        IO_ES.escribirLnCyan("2. ¿Un producto de ParaFarmacia?.");
+                        IO_ES.escribirLnCyan(" ");
+                        opcion = IO_ES.leerInteger("Escoge una opción entre 1 y 2: ", 1, 2);
+
+                        switch (opcion) {
+
+                            case 1:
+
+                                aniadirMedicamento(codigo, nombre, descripcion, precio, unidades);
+                                break;
+
+                            case 2:
+
+                                aniadirParaFarmacia(codigo, nombre, descripcion, precio, unidades);
+                                break;
+
+                        }
 
                         contadorProductos++; //Cada vez que creemos un producto aumentamos el contador
 
@@ -801,6 +788,7 @@ public class Principal {
                     }
 
                 }
+
                 if (contador == MAXIMOPRODUCTOS) {
 
                     IO_ES.escribirLN("Base de datos llena, ya no caben más productos");
@@ -815,7 +803,59 @@ public class Principal {
 
     }
 
-    //********** Opción 2.2. y 3.2  Método modificarCodigo ************
+    //******************  Método aniadirMedicamento **************
+    /**
+     * Método para añadir medicamentos al arrayProducto. Se usará dentro del
+     * método crearPrducto para poder crear el objeto Medicamento y completar
+     * los parámetros que lo diferen de parafarmacia
+     * @param codigo String que es el identificador del producto
+     * @param nombre String que da el nombre al producto
+     * @param descripcion String que describe lo necesario del producto
+     * @param precio double que define el precio del producto
+     * @param unidades int que define el número de unidades del producto
+     */
+    public static void aniadirMedicamento(String codigo, String nombre, String descripcion, double precio, int unidades) {
+        boolean huecoLleno = false;
+        boolean bandera = false;
+
+        Enumerados.TipoMedicamento medicamento;
+        String comoTomar;
+        String efectosAdversos;
+        medicamento = menuEnumTipoMedicamento();
+        comoTomar = (IO_ES.leerCadena("Indique cómo tomar el medicamento: "));
+        efectosAdversos = (IO_ES.leerCadena("Introduzca posibles efectos adversos del medicamento: "));
+        arrayProductos[contadorProductos] = new Medicamento(codigo, nombre, descripcion, precio, unidades, medicamento, comoTomar, efectosAdversos);
+    }
+
+    //* ****************  Método aniadirParaFarmacia **************
+    /**
+     * Método para añadir nuevo producto de parafarmacia al arrayProducto. Irá
+     * dentro del método crearProducto, y se llamará a la hora de querer crear
+     * un producto de parafarmacia.
+     * @param codigo String que es el identificador del producto
+     * @param nombre String que da el nombre al producto
+     * @param descripcion String que describe lo necesario del producto
+     * @param precio double que define el precio del producto
+     * @param unidades int que define el número de unidades del producto
+     */
+    public static void aniadirParaFarmacia(String codigo, String nombre, String descripcion, double precio, int unidades) {
+
+        boolean huecoLleno = false;
+        boolean bandera = false;
+
+        Enumerados.Categoria categoria;
+        int dosisUnidades = 0;
+        float descuento = 0;
+
+        categoria = menuEnumCategoriaParafarmacia();
+        dosisUnidades = IO_ES.leerInteger("Introduzca el número de dosis que hay en cada envase: ");
+        descuento = IO_ES.leerReal("Indica que descuento tiene el producto: ");
+
+        arrayProductos[contadorProductos] = new ParaFarmacia(codigo, nombre, descripcion, precio, unidades, categoria, dosisUnidades, descuento);
+
+    }
+
+    //********** Opción 2.2. Método modificarCodigo ************
     /**
      * Método para modificar el código de un producto
      */
@@ -841,7 +881,7 @@ public class Principal {
 
     }
 
-    //********** Opción 2.3.  y 3.3 Método modificarNombreProducto ************
+    //********** Opción 2.3. Método modificarNombreProducto ************
     /**
      * Método para modificar el nombre de un producto
      */
@@ -869,7 +909,7 @@ public class Principal {
 
     }
 
-    //**********Opción 2.4.  y 3.4. Método modificarDescripcion ************
+    //**********Opción 2.4. Método modificarDescripcion ************
     /**
      * Método para modificar la descripción de un producto
      */
@@ -897,7 +937,7 @@ public class Principal {
 
     }
 
-    //********** Opción 2.5. y 3.5.  Método modificarPrecio ************
+    //********** Opción 2.5. Método modificarPrecio ************
     /**
      * Método para modificar el precio del producto
      */
@@ -926,11 +966,10 @@ public class Principal {
 
     }
 
-//****************** Opción 2.6. y 3.6.  Método ponerUnidades **********
+//****************** Opción 2.6. Método ponerUnidades **********
     /**
      * Método que buscará un producto y le añadirá unidades Mostrará un mensaje
      * de "operación realizada" para tranquilidad del usuario.
-     *
      */
     public static void ponerUnidades() {
 
@@ -960,7 +999,7 @@ public class Principal {
 
     }
 
-    //****************** Opción 2.7. y 3.7.  Método restarUnidades **********
+    //****************** Opción 2.7. Método restarUnidades **********
     /**
      * Método que buscará un producto y le restará unidades Mostrará un mensaje
      * de "operación realizada" para tranquilidad del usuario.
@@ -994,93 +1033,6 @@ public class Principal {
         }
     }
 
-    //****************** Opción 2.8.  Método modificarTipoMediamento **********
-    /**
-     * Método para modificar el tipo de medicameto
-     */
-    public static void modificarTipoMedicamento() {
-
-        String codigo;
-        TipoMedicamento tipoMeicamento;
-        Medicamento productoAmodificar;
-        TipoMedicamento nuevoTipoMedicamento;
-        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
-        codigo = rellenarCodigo(); //Comprobamos que el código es válido
-        productoAmodificar = (Medicamento) buscarProductos(codigo);
-
-        if (productoAmodificar == null) {
-
-            IO_ES.escribirLnRojo("Producto no existente.");
-
-        } else {
-
-            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
-            nuevoTipoMedicamento = menuEnumTipoMedicamento();
-            productoAmodificar.setTipoMedicamento(nuevoTipoMedicamento);
-            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
-
-        }
-
-    }
-
-    //****************** Opción 2.9.  Método modificarComoTomar ***************
-    /**
-     * Método para modificar el cómo tomar el medicamento
-     */
-    public static void modificarComoTomarMediacamento() {
-
-        String codigo;
-        TipoMedicamento tipoMeicamento;
-        Medicamento productoAmodificar;
-        String nuevoComoTomarMedicamento;
-        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
-        codigo = rellenarCodigo(); //Comprobamos que el código es válido
-        productoAmodificar = (Medicamento) buscarProductos(codigo);
-
-        if (productoAmodificar == null) {
-
-            IO_ES.escribirLnRojo("Producto no existente.");
-
-        } else {
-
-            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
-            nuevoComoTomarMedicamento = IO_ES.leerCadena("Introduzca la nueva forma de tomar el medicamento: ");
-            productoAmodificar.setComoTomar(nuevoComoTomarMedicamento);
-            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
-
-        }
-
-    }
-
-    //****************** Opción 2.10.  Método modificarEfectosAdversos **********
-    /**
-     * Método para modificar el cómo tomar el medicamento
-     */
-    public static void modificarEfectosAdversos() {
-
-        String codigo;
-        TipoMedicamento tipoMeicamento;
-        Medicamento productoAmodificar;
-        String nuevosEfectosAdversos;
-        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
-        codigo = rellenarCodigo(); //Comprobamos que el código es válido
-        productoAmodificar = (Medicamento) buscarProductos(codigo);
-
-        if (productoAmodificar == null) {
-
-            IO_ES.escribirLnRojo("Producto no existente.");
-
-        } else {
-
-            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
-            nuevosEfectosAdversos = IO_ES.leerCadena("Introduzca los nuevos efectos adversos del medicamento: ");
-            productoAmodificar.setEfectosAdversos(nuevosEfectosAdversos);
-            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
-
-        }
-
-    }
-
     //********** Opción 2.11 y 3.11. Método eliminarProducto ************
     /**
      * Método para eliminar un producto, ponemos el valor del objeto a null
@@ -1112,99 +1064,76 @@ public class Principal {
     }
 
     //*********************************************************************************************************************
-    // Fin bloque menú Medicamentos
+    // Fin bloque menú Productos
     //*********************************************************************************************************************
     //*********************************************************************************************
-    //           Bloque Menú Parafarmacia
+    //           Bloque Menú modificarOtrosParametros
     //***************************************************************************************************
+    //************* Método menuModificarOtrosParametros**********
     /**
-     * ************* Opción 2. Método menuMedicamento
-     * ********************************************* /** Menú a mostrar cuando
-     * queramos trabajar con un medicamento
+     * Menú a mostrar cuando los parámetros específicos de Medicamentos o
+     * Productos de Parafarmacia
      *
      */
-    public static void menuParafarmacia() {
+    public static void menuModificarOtrosParametros() {
 
         int opcion;
         boolean bandera = false;
 
         do {
             IO_ES.escribirLnVerde(" ");
-            IO_ES.escribirLnVerde("< --- *** Menú Parafarmacia: *** --- >");
+            IO_ES.escribirLnVerde("< --- *** Menú Modificar Otros Parámetros *** --- >");
             IO_ES.escribirLnVerde(" ");
-            IO_ES.escribirLnVerde("1. Añadir producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("2. Modificar código del producto de Parafarmacia");
-            IO_ES.escribirLnVerde("3. Modificar nombre del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("4. Modificar la descripción del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("5. Modificar el precio del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("6. Añadir unidades del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("7. Restar unidades del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("8. Modificar la categoría del producto Parafarmacia.");
-            IO_ES.escribirLnVerde("9. Modificar las dosis de cada unidad del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("10. Modificar el descuento del producto de Parafarmacia.");
-            IO_ES.escribirLnVerde("11. Eliminar un producto de Parafarmacia.");
+            IO_ES.escribirLnCyan("1. Modificar el tipo de medicamento.");
+            IO_ES.escribirLnCyan("2. Modificar cómo tomar el medicamento.");
+            IO_ES.escribirLnCyan("3. Modificar los efectos adeversos del medicamento.");
+            IO_ES.escribirLnVerde(" ");
+            IO_ES.escribirLnVerde("4. Modificar la categoría del producto Parafarmacia.");
+            IO_ES.escribirLnVerde("5. Modificar las dosis de cada unidad del producto de Parafarmacia.");
+            IO_ES.escribirLnVerde("6. Modificar el descuento del producto de Parafarmacia.");
+            IO_ES.escribirLnVerde(" ");
             IO_ES.escribirLnVerde("0. Volver al menú principal");
             IO_ES.escribirLnVerde(" ");
-            opcion = IO_ES.leerInteger("Escoge una opción entre 0 y 11: ", 0, 11);
+            opcion = IO_ES.leerInteger("Escoge una opción entre 0 y 6: ", 0, 6);
 
             switch (opcion) {
 
                 case 1: {
-                    aniadirParaFarmacia();
+
+                    modificarTipoMedicamento();
+
                     break;
                 }
 
                 case 2: {
-                    modificarCodigo();
+
+                    modificarComoTomarMediacamento();
+
                     break;
                 }
+
                 case 3: {
-                    modificarNombreProducto();
+
+                    modificarEfectosAdversos();
+
                     break;
                 }
                 case 4: {
-                    modificarDescripcion();
-                    break;
-                }
-                case 5: {
-                    modificarPrecio();
-                    break;
-                }
-
-                case 6: {
-                    ponerUnidades();
-                    break;
-                }
-
-                case 7: {
-                    restarUnidades();
-                    break;
-                }
-
-                case 8: {
 
                     modificarCategoria();
 
                     break;
                 }
-
-                case 9: {
+                case 5: {
 
                     modificarDosisUnidades();
 
                     break;
                 }
 
-                case 10: {
+                case 6: {
 
                     modificarDescuento();
-
-                    break;
-                }
-
-                case 11: {
-
-                    eliminarProducto();
 
                     break;
                 }
@@ -1222,88 +1151,96 @@ public class Principal {
 
     }
 
-    //* **************** opción 3.1. de menuAñadirProducto: Método aniadirParaFarmacia **************
+    //****************** Opción 3.1.  Método modificarTipoMediamento **********
     /**
-     *
-     *
-     * /** Método para añadir nuevo producto de parafarmacia al arrayProducto.
-     * Si encuentra uns posición vacía en el arrayProductos colocará ahí al
-     * nuevo objeto ParaFarmacia y saldrá del bucle. Preguntará cada parámetro
-     * del contructror ParaFarmacia.
-     *
-     *
+     * Método para modificar el tipo de medicameto
      */
-    public static void aniadirParaFarmacia() {
+    public static void modificarTipoMedicamento() {
 
-        boolean huecoLleno = false;
-        boolean bandera = false;
         String codigo;
-        String nombre;
-        String descripcion = " ";
-        Double precio = 0.0;
-        int unidades = 0;
-        Enumerados.Categoria categoria;
-        int dosisUnidades = 0;
-        float descuento = 0;
+        TipoMedicamento tipoMeicamento;
+        Medicamento productoAmodificar;
+        TipoMedicamento nuevoTipoMedicamento;
+        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
+        codigo = rellenarCodigo(); //Comprobamos que el código es válido
+        productoAmodificar = (Medicamento) buscarProductos(codigo);
 
-        codigo = rellenarCodigo();
+        if (productoAmodificar == null) {
 
-        if (Producto.comprobarCodigo(codigo)) {
-
-            if (comprobarProductoExiste(codigo) == true) {  //Comprobamos si el producto ya existe
-
-                IO_ES.escribirLN("Producto ya existente");
-
-            } else {
-
-                int contador = 0; //Contador para saber si la base datos está llena. Si no se encuentran huecos vacíos, al final ese contador será igual que el número máximo del array
-
-                for (int i = 0; i < MAXIMOPRODUCTOS && !huecoLleno; i++) {
-
-                    if (arrayProductos[i] == null) { //Si comprobamos todo lo anterior, ahora buscamos el primer hueco en el array y ahí metemos al producto
-
-                        nombre = (IO_ES.leerCadena("Introduzca el nombre: "));
-                        descripcion = (IO_ES.leerCadena("Introduzca la descripción: "));
-                        precio = (IO_ES.leerRealLargo("Introduzca el precio: "));
-                        unidades = (IO_ES.leerInteger("Introduzca las unidades del producto: "));
-                        categoria = menuEnumCategoriaParafarmacia();
-                        dosisUnidades = IO_ES.leerInteger("Introduzca el número de dosis que hay en cada envase: ");
-                        descuento = IO_ES.leerReal("Indica que descuento tiene el producto: ");
-
-                        arrayProductos[contadorProductos] = new ParaFarmacia(codigo, nombre, descripcion, precio, unidades, categoria, dosisUnidades, descuento);
-
-                        contadorProductos++; //Cada vez que creemos un producto aumentamos el contador
-
-                        huecoLleno = true; //con esto evitamos seguir el bucle que busca el hueco
-
-                    } else {
-
-                        huecoLleno = false;
-                        contador++;
-                    }
-
-                }
-                if (contador == MAXIMOPRODUCTOS) {
-
-                    IO_ES.escribirLN("Base de datos llena, ya no caben más productos");
-                }
-
-            }
+            IO_ES.escribirLnRojo("Producto no existente.");
 
         } else {
 
-            IO_ES.escribirLnRojo("No se puede crear un medicamento sin un código válido. Vuelva a empezar.");
+            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
+            nuevoTipoMedicamento = menuEnumTipoMedicamento();
+            productoAmodificar.setTipoMedicamento(nuevoTipoMedicamento);
+            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
+
         }
 
     }
 
-    //***************************************************************************************************
-    // Los métodos para modificar código, modificar descripción, modificar id, modificar nombre producto, modificar precio, poner unidades, restar unidades
-    // y eliminar productos, van a ser los mismos para medicamentos y parafarmacia
-    //***************************************************************************************************
-    //****************** Opción 2.8.  Método modificarTipoMediamento **********
+    //****************** Opción 3.2.  Método modificarComoTomar ***************
     /**
-     * Método para modificar el tipo de medicameto
+     * Método para modificar el cómo tomar el medicamento
+     */
+    public static void modificarComoTomarMediacamento() {
+
+        String codigo;
+        TipoMedicamento tipoMeicamento;
+        Medicamento productoAmodificar;
+        String nuevoComoTomarMedicamento;
+        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
+        codigo = rellenarCodigo(); //Comprobamos que el código es válido
+        productoAmodificar = (Medicamento) buscarProductos(codigo);
+
+        if (productoAmodificar == null) {
+
+            IO_ES.escribirLnRojo("Producto no existente.");
+
+        } else {
+
+            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
+            nuevoComoTomarMedicamento = IO_ES.leerCadena("Introduzca la nueva forma de tomar el medicamento: ");
+            productoAmodificar.setComoTomar(nuevoComoTomarMedicamento);
+            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
+
+        }
+
+    }
+
+    //****************** Opción 3.3.  Método modificarEfectosAdversos **********
+    /**
+     * Método para modificar el cómo tomar el medicamento
+     */
+    public static void modificarEfectosAdversos() {
+
+        String codigo;
+        TipoMedicamento tipoMeicamento;
+        Medicamento productoAmodificar;
+        String nuevosEfectosAdversos;
+        IO_ES.escribirLN("Vamos a buscar por su código al medicamento a modificar: ");
+        codigo = rellenarCodigo(); //Comprobamos que el código es válido
+        productoAmodificar = (Medicamento) buscarProductos(codigo);
+
+        if (productoAmodificar == null) {
+
+            IO_ES.escribirLnRojo("Producto no existente.");
+
+        } else {
+
+            IO_ES.escribirLN("El medicamento a modificar es: \n" + productoAmodificar);
+            nuevosEfectosAdversos = IO_ES.leerCadena("Introduzca los nuevos efectos adversos del medicamento: ");
+            productoAmodificar.setEfectosAdversos(nuevosEfectosAdversos);
+            IO_ES.escribirLN("Los datos nuevos del producto son: \n" + productoAmodificar);
+
+        }
+
+    }
+
+    //****************** Opción 3.4.  Método modificarCategoría **********
+    /**
+     * Método para modificar la categoría del producto de parafarmacia
      */
     public static void modificarCategoria() {
 
@@ -1330,9 +1267,9 @@ public class Principal {
 
     }
 
-    //****************** Opción 2.9.  Método modificarComoTomar ***************
+    //****************** Opción 3.5..  Método modificarDosisUnidades ***************
     /**
-     * Método para modificar el cómo tomar el medicamento
+     * Método para modificar las dosis que vienen por envase
      */
     public static void modificarDosisUnidades() {
 
@@ -1359,9 +1296,9 @@ public class Principal {
 
     }
 
-    //****************** Opción 2.10.  Método modificarEfectosAdversos **********
+    //****************** Opción 3.6.  Método modificarDescuento **********
     /**
-     * Método para modificar el cómo tomar el medicamento
+     * Método para modificar el descuento de un producto de parafarmacia
      */
     public static void modificarDescuento() {
 
@@ -1389,9 +1326,9 @@ public class Principal {
     }
 
     //*********************************************************************************************************************
-    // Fin bloque menú parafarmacia
+    // Fin bloque menú menuModificarOtrosParametros
     //*********************************************************************************************************************
-    //******************* Opción 4. visualizarUnCliente ******
+    //******************* Opción 3. visualizarUnCliente ******
     /**
      * Método para poder ver un sólo cliente.
      *
@@ -1402,26 +1339,21 @@ public class Principal {
         String id;
         id = rellenarNif();
         boolean bandera = false;
-
-        if (!id.equalsIgnoreCase("Documento no válido")) {
-
-            for (int i = 0; i < MAXIMOCLIENTES && !bandera; i++) {
-
-                if (id.equalsIgnoreCase(arrayClientes[i].getId())) {
-
-                    arrayClientes[i].toString();
-
-                }
-
-            }
-        } else {
-
-            IO_ES.escribirLnAzul("Cliente no existente en nuestra base de datos.");
+        Cliente clienteEncontrado;
+        clienteEncontrado = buscarClientes(id);
+        
+        if(clienteEncontrado != null){
+            
+            System.out.println(clienteEncontrado);
         }
 
     }
 
-    //******************* Opción 5. visualizarUnProducto ******
+          
+
+    
+
+    //******************* Opción 4. visualizarUnProducto ******
     /**
      * Método para poder ver un solo producto.
      *
@@ -1443,7 +1375,7 @@ public class Principal {
             productoAvisualizar = buscarProductos(codigo);
 
             if (productoAvisualizar != null) {
-                productoAvisualizar.toString();
+                System.out.println(productoAvisualizar);
             } else {
                 IO_ES.escribirLnRojo("Producto no existente.");
             }
@@ -1453,7 +1385,7 @@ public class Principal {
 
     }
 
-    //******************* Opción 6. visualizarClientes ******
+    //******************* Opción 5. visualizarClientes ******
     /**
      * Método para poder ver los clientes totales que tenemos El resultado será
      * el array clientes con sus objetos. Si está vacío el hueco del aray no lo
@@ -1462,14 +1394,25 @@ public class Principal {
      *
      */
     public static void visualizarClientes() {
+        
+        boolean bandera = false;
+        int impresiones = 0;
 
         if (contadorClientes != 0) {
 
-            for (int i = 0; i < MAXIMOCLIENTES; i++) {
+            for (int i = 0; i < MAXIMOCLIENTES && !bandera; i++) {
 
                 if (arrayClientes[i] != null) {
 
                     System.out.println(arrayClientes[i]);
+                    impresiones++;
+                    
+                    if(impresiones%3 == 0){
+                        
+                        if(!IO_ES.leerBooleano("\n¿Quieres seguir viendo clientes? s/n ")){
+                            bandera = true;
+                        };
+                    }
                 }
 
             }
@@ -1479,7 +1422,7 @@ public class Principal {
         }
     }
 
-    //******************* Opción 7. visualizarProductos ******
+    //******************* Opción 6. visualizarProductos ******
     /**
      * Método para poder ver los productos totales que tenemos El resultado será
      * el array productos con sus objetos. Si está vacío el hueco del aray no lo
@@ -1488,6 +1431,9 @@ public class Principal {
      *
      */
     public static void visualizarProductos() {
+        
+        boolean bandera = false;
+        int impresiones = 0;
 
         if (contadorProductos != 0) {
 
@@ -1496,6 +1442,14 @@ public class Principal {
                 if (arrayProductos[i] != null) {
 
                     System.out.println(arrayProductos[i]);
+                      impresiones++;
+                    
+                    if(impresiones%3 == 0){
+                        
+                        if(!IO_ES.leerBooleano("\n¿Quieres seguir viendo productos? s/n ")){
+                            bandera = true;
+                        };
+                    }
                 }
             }
         } else {
@@ -1507,6 +1461,8 @@ public class Principal {
     //**********************************************************************
     //     MÉTODOS COMUNES
     //******************************************************************
+    
+    
     //************ Método buscarClientes ************
     /**
      * Método para buscar un cliente, para ello usamos el NIF del cliente. Le
@@ -1543,6 +1499,7 @@ public class Principal {
     }
 
     //************ Método comprobarClienteExiste ************
+    
     /**
      * Método para comprobar si un cliente ya existe, para ello usamos el NIF
      * del cliente. Le introducimoms por parámetro el NIF, y nos devolverá true

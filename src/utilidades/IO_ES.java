@@ -92,8 +92,8 @@ public class IO_ES {
      * por parámetro un mensaje. El número esperado es un número entero, y mayor
      * que o igual que el pedido
      *
-     * @param mensaje --> mensaje que muestra para la petición del dato
-     * @param min --> valor mínimo que debe meter el usuario
+     * @param mensaje -- mensaje que muestra para la petición del dato
+     * @param min -- valor mínimo que debe meter el usuario
      * @return int un número entero que hemos llamado
      */
     static public int leerInteger(String mensaje, int min) {
@@ -138,9 +138,9 @@ public class IO_ES {
      * por parámetro un mensaje. El número esperado es un número entero, mayor
      * que min y menor que max
      *
-     * @param mensaje String --> mensaje que muestra para la petición del dato
-     * @param min int --> valor mínimo que debe meter el usuario
-     * @param max int --> valor máximo que debe meter el usuario
+     * @param mensaje String  mensaje que muestra para la petición del dato
+     * @param min int  valor mínimo que debe meter el usuario
+     * @param max int  valor máximo que debe meter el usuario
      * @return num int un número entero que hemos llamado
      */
     static public int leerInteger(String mensaje, int min, int max) {
@@ -258,8 +258,8 @@ public class IO_ES {
      * pide por parámetro un mensaje. El número esperado es un número real, y
      * mayor que o igual que el pedido
      *
-     * @param mensaje String --> mensaje que muestra para la petición del dato
-     * @param min int --> valor mínimo que debe meter el usuario
+     * @param mensaje String  mensaje que muestra para la petición del dato
+     * @param min int  valor mínimo que debe meter el usuario
      * @return num float que hemos llamado num
      */
     static public float leerReal(String mensaje, int min) {
@@ -553,21 +553,22 @@ public class IO_ES {
     /**
      * Método para que el texto que se escriba salga en rojo, con salto de línea
      *
-     * @param mensaje
+     * @param mensaje texto a imprimir en rojo
      */
-    public static void escribirLnRojo(String mensage) {
+    public static void escribirLnRojo(String mensaje) {
 
         String red = "\033[31m";
 
-        System.out.println(red + mensage + reset);
+        System.out.println(red + mensaje + reset);
     }
+    
 
     //*************Método para que el texto de salida sea verde *****************
     /**
      * Método para que el texto que se escriba salga en verde, con salto de
      * línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en verde
      */
     public static void escribirLnVerde(String mensaje) {
 
@@ -581,7 +582,7 @@ public class IO_ES {
     /**
      * Método para que el texto que se escriba salga en azul, con salto de línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en azul
      */
     public static void escribirLnAzul(String mensaje) {
 
@@ -596,7 +597,7 @@ public class IO_ES {
      * Método para que el texto que se escriba salga en morado, con salto de
      * línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en morado
      */
     public static void escribirLnPurple(String mensaje) {
 
@@ -610,7 +611,7 @@ public class IO_ES {
     /**
      * Método para que el texto que se escriba salga en cyan, con salto de línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en cyan
      */
     public static void escribirLnCyan(String mensaje) {
 
@@ -625,7 +626,7 @@ public class IO_ES {
      * Método para que el texto que se escriba salga en amarillo, con salto de
      * línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en amarillo
      */
     public static void escribirLnAmarillo(String mensaje) {
 
@@ -640,7 +641,7 @@ public class IO_ES {
      * Método para que el texto que se escriba salga en blanco, con salto de
      * línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en blanco
      */
     public static void escribirLnBlanco(String mensaje) {
 
@@ -655,7 +656,7 @@ public class IO_ES {
      * Método para que el texto que se escriba salga en negro, con salto de
      * línea
      *
-     * @param mensaje
+     * @param mensaje mensaje a escribir por el programador para que salga por pantalla en negro
      */
     public static void escribirLnNegro(String mensaje) {
 
