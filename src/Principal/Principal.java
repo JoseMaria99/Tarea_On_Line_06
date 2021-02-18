@@ -262,11 +262,13 @@ public class Principal {
 
         String id;
         Cliente clienteAmodificar;
+        boolean darDeBaja = false;
         IO_ES.escribirLN("Vamos a buscar por id al cliente a modificar: ");
         id = rellenarNif(); //Comprobamos que el NIF es válido
         clienteAmodificar = buscarClientes(id);
         IO_ES.escribirLN("El cliente a modificar es: \n" + clienteAmodificar);
-        clienteAmodificar.setBaja(IO_ES.leerBooleano("¿Quieres dar de baja a este cliente? s / n"));
+        darDeBaja = IO_ES.leerBooleano("¿Quieres dar de baja a este cliente? s / n");
+        clienteAmodificar.setBaja(darDeBaja);
         IO_ES.escribirLN("Los datos nuevos del cliente son: \n" + clienteAmodificar);
 
     }
@@ -305,6 +307,7 @@ public class Principal {
 
         String id;
         Cliente clienteAmodificar;
+        String nuevoNombre;
         IO_ES.escribirLN("Vamos a buscar por id al cliente a modificar: ");
         id = rellenarNif(); //Comprobamos que el NIF es válido
         clienteAmodificar = buscarClientes(id);
@@ -312,7 +315,8 @@ public class Principal {
         if (clienteAmodificar != null) {
 
             IO_ES.escribirLN("El cliente a modificar es: \n" + clienteAmodificar);
-            clienteAmodificar.setNombre(IO_ES.leerCadena("Introduce el nuevo nombre del cliente: "));
+            nuevoNombre = IO_ES.leerCadena("Introduce el nuevo nombre del cliente: ");
+            clienteAmodificar.setNombre(nuevoNombre);
             IO_ES.escribirLN("Los datos nuevos del cliente son: \n" + clienteAmodificar);
 
         } else {
@@ -329,6 +333,7 @@ public class Principal {
 
         String id;
         Cliente clienteAmodificar;
+        String nuevaDireccion;
         IO_ES.escribirLN("Vamos a buscar por id al cliente a modificar: ");
         id = rellenarNif(); //Comprobamos que el NIF es válido
         clienteAmodificar = buscarClientes(id);
@@ -336,7 +341,8 @@ public class Principal {
         if (clienteAmodificar != null) {
 
             IO_ES.escribirLN("El cliente a modificar es: \n" + clienteAmodificar);
-            clienteAmodificar.setDireccion(IO_ES.leerCadena("Introduce la nueva dirección del cliente: "));
+            nuevaDireccion = IO_ES.leerCadena("Introduce la nueva dirección del cliente: ");
+            clienteAmodificar.setDireccion(nuevaDireccion);
             IO_ES.escribirLN("Los datos nuevos del cliente son: \n" + clienteAmodificar);
 
         } else {
