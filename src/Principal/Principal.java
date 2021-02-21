@@ -751,7 +751,7 @@ public class Principal {
 
         if (Producto.comprobarCodigo(codigo) == true) { //Compruebo primero que el código es válido
 
-            if (comprobarProductoExiste(codigo) == true) {  //Comprobamos si el producto ya existe
+            if (buscarProductos(codigo) != null) {  //Comprobamos si el producto ya existe
 
                 IO_ES.escribirLN("Producto ya existente");
 
@@ -1630,39 +1630,7 @@ public class Principal {
 
     }
 
-    //************ Método comprobarProductoExiste ************
-    /**
-     * Método para comprobar si un producto ya existe, para ello usamos el
-     * código del producto. Le introducimoms por parámetro el código y nos
-     * devolverá true si existe y false si no existe para luego poder hacer lo
-     * que necesitemos con él
-     *
-     * @param codigo que validaremos con el método de Producto.comprobarCodigo
-     * @return productoYaExiste
-     */
-    public static boolean comprobarProductoExiste(String codigo) {
-
-        boolean productoYaExiste = false;
-        boolean bandera = false;
-
-        for (int i = 0; i < contadorProductos && !bandera; i++) {
-
-            if (arrayProductos[i] != null) {
-
-                if (codigo.equalsIgnoreCase(arrayProductos[i].getCodigo())) {
-
-                    productoYaExiste = true;
-                    bandera = true;
-                }
-
-            }
-
-        }
-
-        return productoYaExiste;
-
-    }
-
+  
 //*************** Método rellenarNif ********
     /**
      * Método para rellenar el NIF o NIE y obtener ya el DNI de 9 caracteres y
