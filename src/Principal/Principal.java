@@ -53,11 +53,12 @@ public class Principal {
             IO_ES.escribirLN("2. Menú productos.");
             IO_ES.escribirLN("3. Ver un solo cliente.");
             IO_ES.escribirLN("4. Ver un solo producto.");
-            IO_ES.escribirLN("5. Listar todos los clientes.");
-            IO_ES.escribirLN("6. Listar todos los productos.");
+            IO_ES.escribirLN("5. Listar todos los clientes de alta.");
+            IO_ES.escribirLN("6. Listar todos los clientes de baja.");
+            IO_ES.escribirLN("7. Listar todos los productos.");
             IO_ES.escribirLN("0. Salir del programa.");
             IO_ES.escribirLN(" ");
-            opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 6);
+            opcion = IO_ES.leerInteger("Escoge una opción: ", 0, 7);
 
             switch (opcion) {
 
@@ -87,11 +88,17 @@ public class Principal {
 
                 case 5:
 
-                    visualizarClientes();
+                    visualizarClientesAlta();
 
                     break;
-
+                    
                 case 6:
+
+                    visualizarClientesBaja();
+
+                break;
+
+                case 7:
 
                     visualizarProductos();
 
@@ -321,7 +328,7 @@ public class Principal {
 
         } else {
 
-            IO_ES.escribirLnRojo("No hay clientes creados.");
+            IO_ES.escribirLnRojo("No existe ese cliente.");
         }
     }
 
@@ -347,7 +354,7 @@ public class Principal {
 
         } else {
 
-            IO_ES.escribirLnRojo("No hay clientes creados.");
+            IO_ES.escribirLnRojo("No existe ese cliente.");
         }
 
     }
@@ -382,7 +389,7 @@ public class Principal {
             }
         } else {
 
-            IO_ES.escribirLnRojo("No hay clientes creados.");
+            IO_ES.escribirLnRojo("No existe ese cliente.");
         }
 
     }
@@ -1348,12 +1355,17 @@ public class Principal {
         Cliente clienteEncontrado;
         clienteEncontrado = buscarClientes(id);
         
-        if(clienteEncontrado != null){
+        if(clienteEncontrado == null){
             
+            IO_ES.escribirLnRojo("No existe este cliente.");
+            
+            
+        }else{
             System.out.println(clienteEncontrado);
-        }
 
     }
+    }
+    
 
           
 
@@ -1391,24 +1403,24 @@ public class Principal {
 
     }
 
-    //******************* Opción 5. visualizarClientes ******
+    //******************* Opción 5. visualizarClientesAlta ******
     /**
-     * Método para poder ver los clientes totales que tenemos El resultado será
+     * Método para poder ver los clientes totales que tenemos y que están de alta. El resultado será
      * el array clientes con sus objetos. Si está vacío el hueco del aray no lo
      * imprimirá
      *
      *
      */
-    public static void visualizarClientes() {
+    public static void visualizarClientesAlta() {
         
         boolean bandera = false;
         int impresiones = 0;
 
         if (contadorClientes != 0) {
 
-            for (int i = 0; i < MAXIMOCLIENTES && !bandera; i++) {
+            for (int i = 0; i < contadorClientes && !bandera; i++) {
 
-                if (arrayClientes[i] != null) {
+                if (arrayClientes[i] != null && !arrayClientes[i].getBaja()) {
 
                     System.out.println(arrayClientes[i]);
                     impresiones++;
@@ -1424,11 +1436,54 @@ public class Principal {
             }
 
         } else {
-            IO_ES.escribirLnRojo("No hay cleintes creados.");
+            IO_ES.escribirLnRojo("No hay clientes creados.");
         }
     }
 
-    //******************* Opción 6. visualizarProductos ******
+    
+    
+    //******************* Opción 6. visualizarClientesBaja ******
+    /**
+     * Método para poder ver los clientes totales que tenemos y que están de baja. El resultado será
+     * el array clientes con sus objetos. Si está vacío el hueco del aray no lo
+     * imprimirá
+     *
+     *
+     */
+    public static void visualizarClientesBaja() {
+        
+        boolean bandera = false;
+        int impresiones = 0;
+
+        if (contadorClientes != 0) {
+
+            for (int i = 0; i < contadorClientes && !bandera; i++) {
+
+                if (arrayClientes[i] != null && arrayClientes[i].getBaja()) {
+
+                    System.out.println(arrayClientes[i]);
+                    impresiones++;
+                    
+                    if(impresiones%3 == 0){
+                        
+                        if(!IO_ES.leerBooleano("\n¿Quieres seguir viendo clientes? s/n ")){
+                            bandera = true;
+                        };
+                    }
+                }
+
+            }
+
+        } else {
+            IO_ES.escribirLnRojo("No hay clientes creados.");
+        }
+    }
+    
+    
+    
+    
+    
+    //******************* Opción 7. visualizarProductos ******
     /**
      * Método para poder ver los productos totales que tenemos El resultado será
      * el array productos con sus objetos. Si está vacío el hueco del aray no lo
@@ -1443,7 +1498,7 @@ public class Principal {
 
         if (contadorProductos != 0) {
 
-            for (int i = 0; i < MAXIMOPRODUCTOS; i++) {
+            for (int i = 0; i < contadorProductos; i++) {
 
                 if (arrayProductos[i] != null) {
 
@@ -1483,7 +1538,7 @@ public class Principal {
         Cliente clienteEncontrado = null;
         boolean bandera = false;
 
-        for (int i = 0; i < MAXIMOCLIENTES && !bandera; i++) {
+        for (int i = 0; i < contadorClientes && !bandera; i++) {
 
             if (arrayClientes[i] != null) {
 
@@ -1520,7 +1575,7 @@ public class Principal {
         boolean clienteYaExiste = false;
         boolean bandera = false;
 
-        for (int i = 0; i < MAXIMOCLIENTES && !bandera; i++) {
+        for (int i = 0; i < contadorClientes && !bandera; i++) {
 
             if (arrayClientes[i] != null) {
 
@@ -1553,7 +1608,7 @@ public class Principal {
         Producto productoEncontrado = null;
         boolean bandera = false;
 
-        for (int i = 0; i < MAXIMOPRODUCTOS && !bandera; i++) {
+        for (int i = 0; i < contadorProductos && !bandera; i++) {
 
             if (arrayProductos[i] == null) {
 
@@ -1590,7 +1645,7 @@ public class Principal {
         boolean productoYaExiste = false;
         boolean bandera = false;
 
-        for (int i = 0; i < MAXIMOPRODUCTOS && !bandera; i++) {
+        for (int i = 0; i < contadorProductos && !bandera; i++) {
 
             if (arrayProductos[i] != null) {
 
